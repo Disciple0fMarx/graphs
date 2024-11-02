@@ -119,6 +119,7 @@ impl Graph {
         matrix
     }
 
+    /// Displays the graph's adjacency matrix.
     pub fn display_adjacency_matrix(&self) {
         let matrix: Vec<Vec<Option<f32>>> = self.adjacency_matrix();
 
@@ -182,6 +183,7 @@ impl Graph {
         matrix
     }
     
+    /// Displays the graph's incidence matrix.
     pub fn display_incidence_matrix(&self) {
         let matrix: Vec<Vec<f32>> = self.incidence_matrix();
         
@@ -194,7 +196,7 @@ impl Graph {
         }
     }
 
-    /// Generates the CSR _(Compressed Sparse Row)_ representation with `adjacents` and `indices`.
+    /// Generates the graph's Compressed Sparse Row _(CSR)_ representation with `adjacents` and `indices`.
     pub fn csr_representation(&self) -> (Vec<Option<String>>, Vec<usize>) {
         let edge_count: usize = self.edge_count;
         let mut adjacents: Vec<Option<String>> = Vec::with_capacity(2 * edge_count + 1);
@@ -231,6 +233,10 @@ impl Graph {
         (adjacents, indices)
     }
 
+    /// Displays the Compressed Sparse Row _(CSR)_ representation of the graph.
+    ///
+    /// * Prints `Indices`, showing the starting positions of each vertex's neighbors in `Adjacents`.
+    /// * Prints `Adjacents`, displaying each vertex's neighbors as a list, with `None` for empty slots.
     pub fn display_csr_representation(&self) {
         let (adjacents, indices) = self.csr_representation();
     
